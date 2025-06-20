@@ -5,6 +5,15 @@ export default function TabLayout() {
   return (
     <Tabs>
       <Tabs.Screen
+        name="home"
+        options={{
+          title: 'Home',
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="house.fill" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="login"
         options={{
           title: 'Login',

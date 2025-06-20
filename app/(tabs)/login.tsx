@@ -19,6 +19,61 @@ import {
 const clerkPubKey =
   'pk_test_c2hhcmluZy1kaW5vc2F1ci05MS5jbGVyay5hY2NvdW50cy5kZXYk'
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  signInContainer: {
+    width: '80%',
+    alignItems: 'center',
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 30,
+  },
+  input: {
+    width: '100%',
+    height: 50,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    paddingHorizontal: 15,
+    marginBottom: 15,
+    fontSize: 16,
+  },
+  button: {
+    width: '100%',
+    height: 50,
+    backgroundColor: '#007AFF',
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 15,
+  },
+  googleButton: {
+    backgroundColor: '#4285F4',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  orText: {
+    fontSize: 16,
+    color: '#666',
+    marginVertical: 10,
+  },
+  welcomeText: {
+    fontSize: 18,
+    textAlign: 'center',
+  },
+})
+
 function SignInForm() {
   const { signIn, setActive } = useSignIn()
   const { startOAuthFlow } = useOAuth({ strategy: 'oauth_google' })
@@ -117,7 +172,7 @@ function LogoutButton() {
   return (
     <TouchableOpacity
       style={[styles.button, { backgroundColor: '#FF3B30' }]}
-      onPress={signOut}
+      onPress={() => signOut()}
     >
       <Text style={styles.buttonText}>Logout</Text>
     </TouchableOpacity>
@@ -139,58 +194,3 @@ export default function LoginScreen() {
     </ClerkProvider>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-  signInContainer: {
-    width: '80%',
-    alignItems: 'center',
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 30,
-  },
-  input: {
-    width: '100%',
-    height: 50,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 8,
-    paddingHorizontal: 15,
-    marginBottom: 15,
-    fontSize: 16,
-  },
-  button: {
-    width: '100%',
-    height: 50,
-    backgroundColor: '#007AFF',
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 15,
-  },
-  googleButton: {
-    backgroundColor: '#4285F4',
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  orText: {
-    fontSize: 16,
-    color: '#666',
-    marginVertical: 10,
-  },
-  welcomeText: {
-    fontSize: 18,
-    textAlign: 'center',
-  },
-})
