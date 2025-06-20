@@ -2,6 +2,7 @@ import {
   ClerkProvider,
   SignedIn,
   SignedOut,
+  useAuth,
   useOAuth,
   useSignIn,
 } from '@clerk/clerk-expo'
@@ -110,6 +111,19 @@ function SignInForm() {
   )
 }
 
+function LogoutButton() {
+  const { signOut, isLoaded } = useAuth()
+  if (!isLoaded) return null
+  return (
+    <TouchableOpacity
+      style={[styles.button, { backgroundColor: '#FF3B30' }]}
+      onPress={signOut}
+    >
+      <Text style={styles.buttonText}>Logout</Text>
+    </TouchableOpacity>
+  )
+}
+
 export default function LoginScreen() {
   return (
     <ClerkProvider publishableKey={clerkPubKey}>
@@ -119,6 +133,7 @@ export default function LoginScreen() {
         </SignedOut>
         <SignedIn>
           <Text style={styles.welcomeText}>Welcome! You are signed in.</Text>
+          <LogoutButton />
         </SignedIn>
       </View>
     </ClerkProvider>
